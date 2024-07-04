@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"image": {
+			"type": "string",
+			"format": "uri"
+		},
+		"cards": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "number"
+					},
+					"name": {
+						"type": "string"
+					},
+					"image": {
+						"type": "string",
+						"format": "uri"
+					}
+				},
+				"required": ["id", "name", "image"]
+			}
+		}
+	},
+	"required": ["id", "name", "cards", "image"]
+}

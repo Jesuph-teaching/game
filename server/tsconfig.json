@@ -1,0 +1,36 @@
+{
+	"compilerOptions": {
+		"target": "ES6",
+		"module": "CommonJS",
+		"baseUrl": ".",
+		"paths": {
+			"&server/*": [
+				"src/config/*"
+			],
+			"#server/*": [
+				"src/models/*"
+			],
+			"$server/*": [
+				"src/log/*"
+			],
+			"@server/*": [
+				"src/*"
+			]
+		},
+		"moduleResolution": "Node",
+		"outDir": "build",
+		"importsNotUsedAsValues": "remove",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noPropertyAccessFromIndexSignature": false,
+		"skipLibCheck": true,
+		"ignoreDeprecations": "5.0"
+	},
+	"include": [
+		"src/**/*.ts",
+	],
+	"exclude": [
+		"node_modules",
+	]
+}

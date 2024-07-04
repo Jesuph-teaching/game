@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "MightySouly";
+    src: url(/MightySouly.ttf);
+}
+.Logo{
+    /* text-2xl sm: text-3xl md:text-4xl bg-gradient-to-r from-violet-600 to-red-400 bg-clip-text text-transparent max-w-[20ch] */
+    @apply text-4xl md:text-5xl xl:text-6xl bg-gradient-to-r from-violet-600 to-red-400 bg-clip-text text-transparent max-w-[15ch] text-center font-[MightySouly];
+}
