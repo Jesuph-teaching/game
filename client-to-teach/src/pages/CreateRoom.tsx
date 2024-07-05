@@ -10,18 +10,8 @@ import Error500 from './Error500';
 export default function CreateRoom() {
 	const { createRoom } = useRoom();
 	const [isJoining, setIsJoining] = useState(false);
-	const {
-		data: choices,
-		error,
-		isLoading,
-	} = useQuery<CardEssential<string>[]>({
-		initialData: [],
-		queryKey: ['cards'],
-		queryFn: getCards,
-	});
+	const choices: CardEssential<string>[] = [];
 
-	if (isLoading) return <Loading />;
-	if (error) return <Error500 />;
 	const [card, setCard] = useState('');
 	return (
 		<main className="flex flex-col items-center p-8 max-w-6xl mx-auto gap-16">

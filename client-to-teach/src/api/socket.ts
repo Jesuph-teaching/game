@@ -21,34 +21,17 @@ const socketMiddleware: Middleware = (store) => {
 	return (next) => (action) => {
 		// Middleware logic for the `initSocket` action
 		if (initSocket.match(action)) {
-			if (!socket && typeof window !== 'undefined') {
+			if (!socket) {
 				// Create/ Get Socket Socket
-				socket = SocketFactory.create();
+				// TODO: create a socket connection with SocketFactory
 			}
 		}
+		if (!socket) return next(action);
 
 		const game = store.getState().game as GameManagerI;
-		if (joinRoom.match(action)) {
-			socket.socket.emit(SocketEvent.JoinRoom, action.payload, game.currentPlayer);
-		}
-		if (createRoom.match(action)) socket.socket.emit(SocketEvent.CreateRoom, action.payload, game.currentPlayer);
+		const currentPlayer = game.gameState.player1!.username === game.currentPlayer!.username ? 'player1' : 'player2';
 
-		if (requestLogOut.match(action)) socket.socket.emit(SocketEvent.LeaveRoom);
-		if (removeCard.match(action)) socket.socket.emit(SocketEvent.RemoveCard, action.payload);
-
-		if (chooseCard.match(action)) socket.socket.emit(SocketEvent.ChooseCard, action.payload);
-
-		if (passTurn.match(action)) {
-			const currentPlayer =
-				game.gameState.player1!.username === game.currentPlayer!.username ? 'player1' : 'player2';
-			if (game.gameState.currentTurn === currentPlayer)
-				socket.socket.emit(SocketEvent.PassedTurn, action.payload);
-		}
-		if (addCard.match(action)) socket.socket.emit(SocketEvent.AddedCard, action.payload);
-
-		if (guessCard.match(action)) socket.socket.emit(SocketEvent.GuessCard, action.payload);
-
-		if (restartGame.match(action)) socket.socket.emit(SocketEvent.Restart);
+		// TODO: add emits actions for all events
 
 		next(action);
 	};

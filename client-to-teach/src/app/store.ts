@@ -2,12 +2,12 @@ import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import socketMiddleware from '$client/socket';
 // import API from '$client';
 
-import game from './contexts/game';
+// import game from './contexts/game';
 import socket from './contexts/socket';
 
 const store = configureStore({
 	reducer: {
-		game,
+		// game,
 		socket,
 	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(socketMiddleware),

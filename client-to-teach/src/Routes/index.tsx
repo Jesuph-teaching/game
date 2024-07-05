@@ -15,25 +15,8 @@ const Error500 = lazy(() => import('@client/pages/Error500'));
 
 export default function Routes() {
 	const { currentPlayerIndex } = useGame();
+	const gameStarted = currentPlayerIndex >= 0;
 	return useRoutes([
-		{ index: true, element: <Navigate to={'/welcome'} /> },
-		{
-			path: 'welcome',
-			element: currentPlayerIndex >= 0 ? <Navigate to={'/game'} /> : <Welcome />,
-		},
-		{
-			path: 'join-room',
-			element: currentPlayerIndex >= 0 ? <Navigate to={'/game'} /> : <JoinRoom />,
-		},
-		{
-			path: 'create-room',
-			element: currentPlayerIndex >= 0 ? <Navigate to={'/game'} /> : <CreateRoom />,
-		},
-		{
-			path: 'game',
-			element: currentPlayerIndex >= 0 ? <Game /> : <Navigate to={'/welcome'} />,
-		},
-
 		/* { path: 'languages', element: <AuthLayout />, children: [{ index: true, element: <Languages /> }] }, */
 		{ path: '500', element: <Error500 /> },
 		{ path: '*', element: <Error404 /> },
